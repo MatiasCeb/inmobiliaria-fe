@@ -1,10 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-import LocatorSearch from './components/LocatorSearch';
-import AddLocatorButton from "./components/AddLocatorButton";
 
-function App() {
+import LocatorSearch from '../components/LocatorSearch';
+import AddLocatorButton from "../components/AddLocatorButton";
+
+function LocatorsPage() {
 
   const API_URL = import.meta.env.VITE_API_URL
 
@@ -44,4 +45,4 @@ function App() {
   )
 }
 
-export default App
+export default LocatorsPage

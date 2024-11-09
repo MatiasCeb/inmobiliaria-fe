@@ -1,0 +1,15 @@
+.add-property-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #17a2b8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-property-button:hover {
+    background-color: #138496;
+  }
+  
