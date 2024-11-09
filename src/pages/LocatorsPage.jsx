@@ -33,9 +33,6 @@ function LocatorsPage() {
 
   return (
     <>
-      <h1>
-        Click on the Vite and React logos to learn more
-      </h1>
       <AddLocatorButton/>
       <LocatorSearch locators={locators} />
       {/* {locators.map((locator) => (
