@@ -3,11 +3,13 @@ import LocatorsPage from './pages/LocatorsPage';
 import AddLocatorForm from './pages/AddLocatorForm';
 import AddPropertyForm from './pages/AddPropertyForm';
 import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 import './MainApp.css'
 
 const MainApp = () => {
   return (
     <Router>
+      <Navbar />
       <div className="app-container">
         <Sidebar />
         <div className="content">

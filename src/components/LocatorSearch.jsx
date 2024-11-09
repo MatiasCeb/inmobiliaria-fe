@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import TableCard from './TableCard';
+import AddLocatorButton from './AddLocatorButton';
 import './LocatorSearch.css';
 
 const LocatorSearch = ({ locators }) => {
@@ -15,13 +16,16 @@ const LocatorSearch = ({ locators }) => {
 
   return (
     <div className="locator-search">
-      <input
-        type="text"
-        placeholder="Buscar por nombre o apellido..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
-      />
+      <div>
+        <AddLocatorButton/>
+        <input
+          type="text"
+          placeholder="Buscar por nombre o apellido..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
 
       <div className="table-card-container">
         {filteredLocators.map(locator => (

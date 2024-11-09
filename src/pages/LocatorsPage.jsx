@@ -33,11 +33,13 @@ function LocatorsPage() {
 
   return (
     <>
-      <AddLocatorButton/>
-      <LocatorSearch locators={locators} />
-      {/* {locators.map((locator) => (
-        <TableCard locator={locator} key={locator.id}/>
-      ))} */}
+      <div>
+        {/* <AddLocatorButton/> */}
+        <LocatorSearch locators={locators} />
+        {/* {locators.map((locator) => (
+          <TableCard locator={locator} key={locator.id}/>
+        ))} */}
+      </div>
     </>
   )
 }
