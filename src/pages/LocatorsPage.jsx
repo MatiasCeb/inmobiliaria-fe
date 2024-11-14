@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 
 import LocatorSearch from '../components/LocatorSearch';
-import AddLocatorButton from "../components/AddLocatorButton";
+// import AddLocatorButton from "../components/AddLocatorButton";
 
 function LocatorsPage() {
 

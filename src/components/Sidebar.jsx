@@ -20,22 +20,26 @@ function Sidebar() {
         <>
           <h2>Menú</h2>
           <div className="menu-item">
-            <button onClick={() => setShowLocatorsSubmenu(!showLocatorsSubmenu)}>
+            {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Locators. Parcial: sumar un menu de listado dentro del submenu*/}
+            <button onClick={() => setShowLocatorsSubmenu(!showLocatorsSubmenu) }>
               Locators
             </button>
             {showLocatorsSubmenu && (
               <div className="submenu">
-                <Link to="/crear-locador">Crear Locador</Link>
+                <Link to="/locators">Lista de Locadores</Link>
+                <Link to="/add-locator">Crear Locador</Link>
                 <Link to="/eliminar-locador">Eliminar Locador</Link>
               </div>
             )}
           </div>
           <div className="menu-item">
+            {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Properties. Parcial: sumar un menu de listado dentro del submenu*/}
             <button onClick={() => setShowPropertiesSubmenu(!showPropertiesSubmenu)}>
               Properties
             </button>
             {showPropertiesSubmenu && (
               <div className="submenu">
+                <Link to="/properties">Lista de Propiedades</Link>
                 <Link to="/crear-property">Crear Property</Link>
                 <Link to="/editar-property">Editar Property</Link>
                 <Link to="/eliminar-property">Eliminar Property</Link>

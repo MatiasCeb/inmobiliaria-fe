@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const AddPropertyForm = () => {
-  const { id } = useParams(); // Obtener el id del locator desde la URL
+  const { locatorId } = useParams(); // Obtener el id del locator desde la URL
   const [name, setName] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
@@ -11,13 +11,13 @@ const AddPropertyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // TODO: El locator id enviado deberia hacer que se sume la propiedad al objeto locator en BE
     const newProperty = {
       name,
       street,
       streetNumber,
-        // TODO: El locator id enviado deberia hacer que se sume la propiedad al objeto locator en BE
       locator: {
-        id: id
+        id: locatorId
       }
     };
 
@@ -29,12 +29,13 @@ const AddPropertyForm = () => {
         },
         body: JSON.stringify(newProperty),
       });
-
+      console.log(JSON.stringify(newProperty))
+      
       if (response.ok) {
         // Redirige a /locators después de una respuesta exitosa
         navigate('/locators');
       } else {
-        console.error('Error en el servidor al agregar la propiedad');
+        console.error('Error en el servidor al agregar la propiedad', response);
       }
     } catch (error) {
       console.error('Error al enviar la solicitud:', error);
