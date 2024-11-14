@@ -35,7 +35,7 @@ const AddPropertyForm = () => {
         // Redirige a /locators después de una respuesta exitosa
         navigate('/locators');
       } else {
-        console.error('Error en el servidor al agregar la propiedad', response);
+        console.error('Error en el servidor al agregar la propiedad');
       }
     } catch (error) {
       console.error('Error al enviar la solicitud:', error);

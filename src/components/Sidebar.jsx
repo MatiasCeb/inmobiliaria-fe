@@ -28,7 +28,6 @@ function Sidebar() {
               <div className="submenu">
                 <Link to="/locators">Lista de Locadores</Link>
                 <Link to="/add-locator">Crear Locador</Link>
-                <Link to="/eliminar-locador">Eliminar Locador</Link>
               </div>
             )}
           </div>

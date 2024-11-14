@@ -35,6 +35,7 @@ const TableCard = ( {locator} ) => {
         )}
         {/* <AddPropertyButton id={locator.id} /> */}
         <Link to={`/add-properties/${locator.id}`} className="view-more-btn">Agregar propiedad</Link>
+        <Link to={`/edit-locator/${locator.id}`} className="view-more-btn">Editar Locador</Link>
         <Link to={`/locators/delete/${locator.id}`} className="view-more-btn">Eliminar Locador</Link>
         <Link to={`/locators/${locator.id}`} className="view-more-btn">Ver más</Link>
       </div>

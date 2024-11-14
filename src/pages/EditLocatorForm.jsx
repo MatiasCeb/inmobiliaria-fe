@@ -1,24 +1,26 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddLocatorForm = () => {
+const EditLocatorForm = () => {
+  const { locatorId } = useParams();
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
-  const [propertiesList] = useState([]);
+  // const [propertiesList] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newLocator = {
+      id: locatorId,
       name,
       lastname,
-      propertiesList,
+      // propertiesList,
     };
 
     try {
-      const response = await fetch('http://localhost:8080/locators/create', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/locators/edit', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -37,7 +39,7 @@ const AddLocatorForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Agregar Nuevo Locator</h2>
+      <h2>Editar Locador</h2>
       <label>
         Nombre:
         <input 
@@ -61,4 +63,4 @@ const AddLocatorForm = () => {
   );
 };
 
-export default AddLocatorForm;
+export default EditLocatorForm;

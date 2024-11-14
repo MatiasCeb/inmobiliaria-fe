@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-const AddPropertyForm = () => {
+const DeleteLocator = () => {
   const { locatorId } = useParams(); 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const AddPropertyForm = () => {
       if (response.ok) {
         navigate('/locators');
       } else {
-        console.error('Error en el servidor al eliminar al locador', response);
+        console.error('Error en el servidor al eliminar al locador');
       }
     } catch (error) {
       console.error('Error al enviar la solicitud:', error);
@@ -33,4 +33,4 @@ const AddPropertyForm = () => {
   );
 };
 
-export default AddPropertyForm;
+export default DeleteLocator;
