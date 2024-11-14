@@ -7,6 +7,8 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import './MainApp.css'
 import EditLocatorForm from './pages/EditLocatorForm';
+import PropertiesPage from './pages/PropertiesPage';
+import DeleteProperty from './pages/DeleteProperty';
 
 const MainApp = () => {
   return (
@@ -22,6 +24,8 @@ const MainApp = () => {
             <Route path="/edit-locator/:locatorId" element={<EditLocatorForm />} />
             <Route path="/add-properties/:locatorId" element={<AddPropertyForm />} />
             <Route path="/locators/delete/:locatorId" element={<DeleteLocator />} />
+            <Route path="/properties" element={<PropertiesPage />} />
+            <Route path="/properties/delete/:propertyId" element={<DeleteProperty />} />
             {/* TODO: pagina de traer lista de propiedades con buscador. Opcional: replicar de LocatorsPage*/}
             {/* <Route path="/crear-locador" element={<CrearLocador />} />
             <Route path="/crear-property" element={<CrearProperty />} />

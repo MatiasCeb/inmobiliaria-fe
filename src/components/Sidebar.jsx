@@ -39,9 +39,6 @@ function Sidebar() {
             {showPropertiesSubmenu && (
               <div className="submenu">
                 <Link to="/properties">Lista de Propiedades</Link>
-                <Link to="/crear-property">Crear Property</Link>
-                <Link to="/editar-property">Editar Property</Link>
-                <Link to="/eliminar-property">Eliminar Property</Link>
               </div>
             )}
           </div>

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import './TableCard.css';
 import { Link } from 'react-router-dom';
-import AddPropertyButton from './AddPropertyButton';
 
 const TableCard = ( {locator} ) => {
   return (
@@ -33,7 +32,6 @@ const TableCard = ( {locator} ) => {
             </table>
           </>
         )}
-        {/* <AddPropertyButton id={locator.id} /> */}
         <Link to={`/add-properties/${locator.id}`} className="view-more-btn">Agregar propiedad</Link>
         <Link to={`/edit-locator/${locator.id}`} className="view-more-btn">Editar Locador</Link>
         <Link to={`/locators/delete/${locator.id}`} className="view-more-btn">Eliminar Locador</Link>
