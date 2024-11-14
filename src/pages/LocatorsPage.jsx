@@ -22,7 +22,7 @@ function LocatorsPage() {
         console.error("Error fetching locators: ", error )
       }
     };
-    console.log(locators)
+    // console.log(locators)
     fetchData();
   }, [])
 
