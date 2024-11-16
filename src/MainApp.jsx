@@ -10,6 +10,9 @@ import EditLocatorForm from './pages/EditLocatorForm';
 import PropertiesPage from './pages/PropertiesPage';
 import DeleteProperty from './pages/DeleteProperty';
 import EditPropertyForm from './pages/EditPropertyForm';
+import ContractsPage from './pages/ContractsPage';
+import NewContractForm from './pages/NewContractForm';
+import ContractViewPage from './pages/ContractViewPage';
 
 const MainApp = () => {
   return (
@@ -28,6 +31,9 @@ const MainApp = () => {
             <Route path="/properties" element={<PropertiesPage />} />
             <Route path="/edit-property/:propertyId" element={<EditPropertyForm />} />
             <Route path="/properties/delete/:propertyId" element={<DeleteProperty />} />
+            <Route path="/contracts" element={<ContractsPage />} />
+            <Route path="/add-contract" element={<NewContractForm />} />
+            <Route path="/contracts/:id" element={<ContractViewPage />} />
             {/* TODO: pagina de traer lista de propiedades con buscador. Opcional: replicar de LocatorsPage*/}
             {/* <Route path="/crear-locador" element={<CrearLocador />} />
             <Route path="/crear-property" element={<CrearProperty />} />

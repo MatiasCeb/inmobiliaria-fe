@@ -1,0 +1,24 @@
+.contract-view {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .contract-view h1, .contract-view h2, .contract-view h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .contract-view p {
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  .contract-view ul, .contract-view ol {
+    margin-left: 20px;
+  }
+  
