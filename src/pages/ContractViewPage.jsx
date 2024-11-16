@@ -32,83 +32,83 @@ const ContractViewPage = () => {
         fetchMarkdown();
     }, [id]);
 
-    const downloadPDF = async () => {
-        const element = contractRef.current;
-        const canvas = await html2canvas(element, { scale: 2 });
-        const imgData = canvas.toDataURL("image/png");
-
-        const pdf = new jsPDF("p", "mm", "a4");
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save("contract.pdf");
-    };
-
-    /* TODO: metodo opcional de descarga de PDF para multiples paginas */
-    
     // const downloadPDF = async () => {
     //     const element = contractRef.current;
-      
-    //     // Captura el contenido como una imagen (canvas)
     //     const canvas = await html2canvas(element, { scale: 2 });
     //     const imgData = canvas.toDataURL("image/png");
-      
-    //     // Inicializa el PDF
-    //     const pdf = new jsPDF("p", "mm", "a4");
-      
-    //     // Tamaño del canvas en píxeles
-    //     const canvasWidth = canvas.width;
-    //     const canvasHeight = canvas.height;
-      
-    //     // Dimensiones del PDF
-    //     const pdfWidth = pdf.internal.pageSize.getWidth();
-    //     const pdfHeight = pdf.internal.pageSize.getHeight();
-      
-    //     // Escala el contenido para encajar en el ancho del PDF
-    //     const scaleFactor = pdfWidth / canvasWidth;
-    //     const scaledHeight = canvasHeight * scaleFactor;
-      
-    //     // Divide el contenido si excede la altura del PDF
-    //     let yOffset = 0;
-      
-    //     while (yOffset < canvasHeight) {
-    //       // Recorta una sección del canvas
-    //       const pageCanvas = document.createElement("canvas");
-    //       pageCanvas.width = canvasWidth;
-    //       pageCanvas.height = Math.min(canvasHeight - yOffset, pdfHeight / scaleFactor);
-    //       const context = pageCanvas.getContext("2d");
-      
-    //       context.drawImage(
-    //         canvas,
-    //         0,
-    //         yOffset,
-    //         canvasWidth,
-    //         pageCanvas.height,
-    //         0,
-    //         0,
-    //         canvasWidth,
-    //         pageCanvas.height
-    //       );
-      
-    //       // Convierte la sección en una imagen
-    //       const pageData = pageCanvas.toDataURL("image/png");
-      
-    //       // Añade la imagen al PDF
-    //       pdf.addImage(pageData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      
-    //       yOffset += pageCanvas.height;
-      
-    //       // Añade una nueva página si no es la última sección
-    //       if (yOffset < canvasHeight) {
-    //         pdf.addPage();
-    //       }
-    //     }
-      
-    //     // Guarda el PDF
-    //     pdf.save("contract.pdf");
-    //   };
 
+    //     const pdf = new jsPDF("p", "mm", "a4");
+    //     const pdfWidth = pdf.internal.pageSize.getWidth();
+    //     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    //     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    //     pdf.save("contract.pdf");
+    // };
+
+    /* TODO: metodo opcional de descarga de PDF para multiples paginas */
+
+    const downloadPDF = async () => {
+        const element = contractRef.current;
+      
+        // Renderiza el contenido HTML a un canvas con alta resolución
+        const canvas = await html2canvas(element, { scale: 2 });
+        const imgData = canvas.toDataURL("image/png");
+      
+        // Dimensiones del PDF
+        const pdf = new jsPDF("p", "mm", "a4");
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+      
+        // Dimensiones de la imagen en mm
+        const imgWidth = pdfWidth;
+        const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+        // Calcula el contenido visible por página en la misma escala
+        const pageHeight = (canvas.width * pdfHeight) / pdfWidth;
+        let yOffset = 0;
+      
+        // Genera cada página del PDF
+        while (yOffset < canvas.height) {
+          // Corta el fragmento actual del canvas
+          const canvasFragment = document.createElement("canvas");
+          canvasFragment.width = canvas.width;
+          canvasFragment.height = Math.min(pageHeight, canvas.height - yOffset);
+      
+          const ctx = canvasFragment.getContext("2d");
+          ctx.drawImage(
+            canvas,
+            0,
+            yOffset,
+            canvas.width,
+            canvasFragment.height,
+            0,
+            0,
+            canvasFragment.width,
+            canvasFragment.height
+          );
+      
+          const fragmentData = canvasFragment.toDataURL("image/png");
+      
+          // Agrega el fragmento como imagen al PDF
+          pdf.addImage(
+            fragmentData,
+            "PNG",
+            0,
+            0,
+            imgWidth,
+            (canvasFragment.height * pdfWidth) / canvas.width
+          );
+      
+          yOffset += pageHeight;
+      
+          // Si hay más contenido, agrega una nueva página
+          if (yOffset < canvas.height) pdf.addPage();
+        }
+      
+        pdf.save("contract.pdf");
+      };
+      
+      
       
 
     if (loading) return <p>Cargando contrato...</p>;
@@ -120,7 +120,7 @@ const ContractViewPage = () => {
                 <button onClick={downloadPDF} style={{ marginTop: "20px", padding: "10px 20px", backgroundColor: "#007BFF", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>
                     Descargar PDF
                 </button>
-                <div ref={contractRef} className="contract-view">
+                <div ref={contractRef} className="contract-container">
                     <ReactMarkdown>{markdownContent}</ReactMarkdown>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-.contract-view {
+/* .contract-view {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -20,5 +20,18 @@
   
   .contract-view ul, .contract-view ol {
     margin-left: 20px;
-  }
+  } */
+
+.contract-container {
+margin: 20px auto; /* Márgenes alrededor del contenido */
+padding: 20px; /* Espacio interno */
+max-width: 800px; /* Ancho máximo del contrato */
+font-family: Arial, sans-serif; /* Fuente legible */
+line-height: 1.6; /* Espaciado entre líneas */
+word-wrap: break-word; /* Permite dividir palabras largas */
+overflow-wrap: break-word; /* Compatibilidad adicional */
+border: 1px solid #ccc; /* Opcional: borde para mejor visualización */
+background-color: #fdfdfd; /* Opcional: fondo claro */
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+}
   
