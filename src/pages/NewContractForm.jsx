@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
 
+import "./NewContractForm.css";
+
 const NewContractForm = () => {
   const API_URL = import.meta.env.VITE_API_URL
 
@@ -69,13 +71,16 @@ const NewContractForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Nuevo Contrato</h2>
-      <div>
-        <label>Locador:</label>
+    <form className="form-contrato" onSubmit={handleSubmit}>
+      <h2 className="form-title">Nuevo Contrato</h2>
+
+      <div className="form-group">
+        <label htmlFor="locador">Locador:</label>
         <select
+          id="locador"
           value={selectedLocador}
           onChange={(e) => setSelectedLocador(e.target.value)}
+          className="form-select"
         >
           <option value="">Seleccione un locador</option>
           {locadores.map((locador) => (
@@ -86,11 +91,13 @@ const NewContractForm = () => {
         </select>
       </div>
 
-      <div>
-        <label>Locatario:</label>
+      <div className="form-group">
+        <label htmlFor="locatario">Locatario:</label>
         <select
+          id="locatario"
           value={selectedLocatario}
           onChange={(e) => setSelectedLocatario(e.target.value)}
+          className="form-select"
         >
           <option value="">Seleccione un locatario</option>
           {locatarios.map((locatario) => (
@@ -101,11 +108,13 @@ const NewContractForm = () => {
         </select>
       </div>
 
-      <div>
-        <label>Inmueble:</label>
+      <div className="form-group">
+        <label htmlFor="inmueble">Inmueble:</label>
         <select
+          id="inmueble"
           value={selectedInmueble}
           onChange={(e) => setSelectedInmueble(e.target.value)}
+          className="form-select"
           disabled={!selectedLocador}
         >
           <option value="">Seleccione un inmueble</option>
@@ -117,7 +126,9 @@ const NewContractForm = () => {
         </select>
       </div>
 
-      <button type="submit">Crear Contrato</button>
+      <button type="submit" className="form-button">
+        Crear Contrato
+      </button>
     </form>
   );
 };

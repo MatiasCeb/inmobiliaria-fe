@@ -108,9 +108,6 @@ const ContractViewPage = () => {
         pdf.save("contract.pdf");
       };
       
-      
-      
-
     if (loading) return <p>Cargando contrato...</p>;
     if (error) return <p>Error: {error}</p>;
 

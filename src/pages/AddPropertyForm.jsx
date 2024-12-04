@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import "./AddPropertyForm.css";
+
 const AddPropertyForm = () => {
   const { locatorId } = useParams(); // Obtener el id del locator desde la URL
   const [name, setName] = useState('');
@@ -43,36 +45,48 @@ const AddPropertyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Agregar Nueva Propiedad</h2>
-      <label>
-        Nombre:
-        <input 
-          type="text" 
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
-          required 
+    <form className="form-property" onSubmit={handleSubmit}>
+      <h2 className="form-title">Agregar Nueva Propiedad</h2>
+
+      <div className="form-group">
+        <label htmlFor="name">Nombre:</label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="form-input"
+          required
         />
-      </label>
-      <label>
-        Calle:
-        <input 
-          type="text" 
-          value={street} 
-          onChange={(e) => setStreet(e.target.value)} 
-          required 
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="street">Calle:</label>
+        <input
+          id="street"
+          type="text"
+          value={street}
+          onChange={(e) => setStreet(e.target.value)}
+          className="form-input"
+          required
         />
-      </label>
-      <label>
-        Número de Calle:
-        <input 
-          type="number" 
-          value={streetNumber} 
-          onChange={(e) => setStreetNumber(e.target.value)} 
-          required 
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="streetNumber">Número de Calle:</label>
+        <input
+          id="streetNumber"
+          type="number"
+          value={streetNumber}
+          onChange={(e) => setStreetNumber(e.target.value)}
+          className="form-input"
+          required
         />
-      </label>
-      <button type="submit">Guardar Propiedad</button>
+      </div>
+
+      <button type="submit" className="form-button">
+        Guardar Propiedad
+      </button>
     </form>
   );
 };

@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
+import "./DeleteProperty.css";
+
 const DeleteProperty = () => {
   const { propertyId } = useParams(); 
   const navigate = useNavigate();
@@ -26,9 +28,9 @@ const DeleteProperty = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>¿Seguro que quieres eliminar esta propiedad?</h2>
-      <button type="submit">Eliminar Propiedad</button>
+    <form className="form-delete-property" onSubmit={handleSubmit}>
+      <h2 className="form-delete-title">¿Seguro que quieres eliminar esta propiedad?</h2>
+      <button className="delete-property-button" type="submit">Eliminar Propiedad</button>
     </form>
   );
 };

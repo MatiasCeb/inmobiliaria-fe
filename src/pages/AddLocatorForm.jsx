@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import "./AddLocatorForm.css";
+
 const AddLocatorForm = () => {
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
@@ -35,28 +37,38 @@ const AddLocatorForm = () => {
     }
   };
 
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Agregar Nuevo Locator</h2>
-      <label>
-        Nombre:
-        <input 
-          type="text" 
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
-          required 
+    <form className="form-locator" onSubmit={handleSubmit}>
+      <h2 className="form-title">Agregar Nuevo Locator</h2>
+
+      <div className="form-group">
+        <label htmlFor="name">Nombre:</label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="form-input"
+          required
         />
-      </label>
-      <label>
-        Apellido:
-        <input 
-          type="text" 
-          value={lastname} 
-          onChange={(e) => setLastname(e.target.value)} 
-          required 
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="lastname">Apellido:</label>
+        <input
+          id="lastname"
+          type="text"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
+          className="form-input"
+          required
         />
-      </label>
-      <button type="submit">Guardar</button>
+      </div>
+
+      <button type="submit" className="form-button">
+        Guardar
+      </button>
     </form>
   );
 };

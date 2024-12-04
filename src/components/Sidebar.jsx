@@ -52,8 +52,8 @@ function Sidebar() {
               <div className="submenu">
                 <Link to="/contracts">Lista de contratos</Link>
                 <Link to="/add-contract">Crear Contrato</Link>
-                <Link to="/edit-contract">Editar Contrato</Link>
-                <Link to="/delete-contract">Eliminar Contrato</Link>
+                {/* <Link to="/edit-contract">Editar Contrato</Link>
+                <Link to="/delete-contract">Eliminar Contrato</Link> */}
               </div>
             )}
           </div>

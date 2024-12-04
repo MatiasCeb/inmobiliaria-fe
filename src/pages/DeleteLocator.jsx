@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
+import "./DeleteLocator.css";
+
 const DeleteLocator = () => {
   const { locatorId } = useParams(); 
   const navigate = useNavigate();
@@ -26,9 +28,11 @@ const DeleteLocator = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>¿Seguro que quieres eliminar al locador y sus propiedades?</h2>
-      <button type="submit">Eliminar Locador</button>
+    <form className="form-delete-locator" onSubmit={handleSubmit}>
+      <h2 className="form-delete-title">¿Seguro que quieres eliminar al locador y sus propiedades?</h2>
+      <button type="submit" className="delete-button">
+        Eliminar Locador
+      </button>
     </form>
   );
 };
