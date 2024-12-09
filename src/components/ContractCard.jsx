@@ -15,7 +15,7 @@ const ContractCard = ( {contract} ) => {
       <div className="table-card-header">
         <h3>{contract.id}</h3>
       </div>
-      <p>Locador: {contract.locator.name}</p>
+      <p>Locador: {contract.landlord.name}</p>
       <p>Locatario: {contract.renter.name}</p>
       <p>Propiedad: {contract.property.name}</p>
       <button onClick={handleViewContract}>Ver Contrato</button>

@@ -4,8 +4,9 @@ import './Sidebar.css';
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [showLocatorsSubmenu, setShowLocatorsSubmenu] = useState(false);
+  const [showLandlordsSubmenu, setShowLandlordsSubmenu] = useState(false);
   const [showPropertiesSubmenu, setShowPropertiesSubmenu] = useState(false);
+  const [showRentersSubmenu, setShowRentersSubmenu] = useState(false);
   const [showContractsSubmenu, setShowContractsSubmenu] = useState(false);
 
   const toggleCollapse = () => {
@@ -22,13 +23,13 @@ function Sidebar() {
           <h2>Menú</h2>
           <div className="menu-item">
             {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Locators. Parcial: sumar un menu de listado dentro del submenu*/}
-            <button onClick={() => setShowLocatorsSubmenu(!showLocatorsSubmenu) }>
-              Locators
+            <button onClick={() => setShowLandlordsSubmenu(!showLandlordsSubmenu) }>
+            Landlords
             </button>
-            {showLocatorsSubmenu && (
+            {showLandlordsSubmenu && (
               <div className="submenu">
-                <Link to="/locators">Lista de Locadores</Link>
-                <Link to="/add-locator">Crear Locador</Link>
+                <Link to="/landlords">Lista de Locadores</Link>
+                <Link to="/add-landlord">Crear Locador</Link>
               </div>
             )}
           </div>
@@ -44,7 +45,19 @@ function Sidebar() {
             )}
           </div>
           <div className="menu-item">
-            {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Locators. Parcial: sumar un menu de listado dentro del submenu*/}
+            {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Locatarios. Parcial: sumar un menu de listado dentro del submenu*/}
+            <button onClick={() => setShowRentersSubmenu(!showRentersSubmenu) }>
+            Locatarios
+            </button>
+            {showRentersSubmenu && (
+              <div className="submenu">
+                <Link to="/renters">Lista de Locatarios</Link>
+                <Link to="/add-renter">Crear Locatario</Link>
+              </div>
+            )}
+          </div>
+          <div className="menu-item">
+            {/* TODO:  que al hacer click tambien redirija a la pantalla de listado de Contratos. Parcial: sumar un menu de listado dentro del submenu*/}
             <button onClick={() => setShowContractsSubmenu(!showContractsSubmenu) }>
               Contratos
             </button>

@@ -13,6 +13,14 @@ import EditPropertyForm from './pages/EditPropertyForm';
 import ContractsPage from './pages/ContractsPage';
 import NewContractForm from './pages/NewContractForm';
 import ContractViewPage from './pages/ContractViewPage';
+import LandlordsPage from './pages/LandlordsPage';
+import EditLandlordForm from './pages/EditLandlordForm';
+import AddLandlordForm from './pages/AddLandlordForm';
+import DeleteLandlord from './pages/DeleteLandlord';
+import RentersPage from './pages/RentersPage';
+import AddRenterForm from './pages/AddRenterForm';
+import DeleteRenter from './pages/DeleteRenter';
+import EditRenterForm from './pages/EditRenterForm';
 
 const MainApp = () => {
   return (
@@ -22,15 +30,19 @@ const MainApp = () => {
         <Sidebar />
         <div className="content">
           <Routes>
-            <Route path="/" element={<LocatorsPage />} />
-            <Route path="/locators" element={<LocatorsPage />} />
-            <Route path="/add-locator" element={<AddLocatorForm />} />
-            <Route path="/edit-locator/:locatorId" element={<EditLocatorForm />} />
-            <Route path="/add-properties/:locatorId" element={<AddPropertyForm />} />
-            <Route path="/locators/delete/:locatorId" element={<DeleteLocator />} />
+            <Route path="/" element={<LandlordsPage />} />
+            <Route path="/landlords" element={<LandlordsPage />} />
+            <Route path="/add-landlord" element={<AddLandlordForm />} />
+            <Route path="/edit-landlord/:landlordId" element={<EditLandlordForm />} />
+            <Route path="/add-properties/:landlordId" element={<AddPropertyForm />} />
+            <Route path="/landlords/delete/:landlordId" element={<DeleteLandlord />} />
             <Route path="/properties" element={<PropertiesPage />} />
             <Route path="/edit-property/:propertyId" element={<EditPropertyForm />} />
             <Route path="/properties/delete/:propertyId" element={<DeleteProperty />} />
+            <Route path="/renters" element={<RentersPage />} />
+            <Route path="/add-renter" element={<AddRenterForm />} />
+            <Route path="/edit-renter/:renterId" element={<EditRenterForm />} />
+            <Route path="/renters/delete/:renterId" element={<DeleteRenter />} />
             <Route path="/contracts" element={<ContractsPage />} />
             <Route path="/add-contract" element={<NewContractForm />} />
             <Route path="/contracts/:id" element={<ContractViewPage />} />

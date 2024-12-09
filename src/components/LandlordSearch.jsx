@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import ContractCard from './ContractCard';
-import AddContractButton from './AddContractButton';
+import TableCard from './TableCard';
+import AddLandlordButton from './AddLandlordButton';
 import './LandlordSearch.css';
 
-const ContractSearch = ({ contracts }) => {
+const LandlordSearch = ({ landlords }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Filtra los contratos en base al nombre o apellido que coincida con la búsqueda
-  const filteredContracts = contracts.filter(contract =>
-    `${contract.id}`
+  // Filtra los landlords en base al nombre o apellido que coincida con la búsqueda
+  const filteredLandlords = landlords.filter(landlord =>
+    `${landlord.name} ${landlord.lastname}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -17,7 +17,7 @@ const ContractSearch = ({ contracts }) => {
   return (
     <div className="locator-search">
       <div>
-        <AddContractButton/>
+        <AddLandlordButton/>
         <input
           type="text"
           placeholder="Buscar por nombre o apellido..."
@@ -28,10 +28,10 @@ const ContractSearch = ({ contracts }) => {
       </div>
 
       <div className="table-card-container">
-        {filteredContracts.map(contract => (
-          <ContractCard key={contract.id} contract={contract} />
+        {filteredLandlords.map(landlord => (
+          <TableCard key={landlord.id} landlord={landlord} />
         ))}
-        {filteredContracts.length === 0 && (
+        {filteredLandlords.length === 0 && (
           <p className="no-results">No se encontraron resultados.</p>
         )}
       </div>
@@ -39,8 +39,8 @@ const ContractSearch = ({ contracts }) => {
   );
 };
 
-export default ContractSearch;
+export default LandlordSearch;
 
-ContractSearch.propTypes = {
-  contracts: PropTypes.array
+LandlordSearch.propTypes = {
+  landlords: PropTypes.array
 };

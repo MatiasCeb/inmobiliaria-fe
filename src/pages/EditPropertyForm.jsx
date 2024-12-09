@@ -9,19 +9,19 @@ const EditPropertyForm = () => {
   const [name, setName] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState(0);
-  const [locatorId, setLocatorId] = useState(0);
+  const [landlordId, setLandlordId] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_URL}property/${propertyId}`);
-        setLocatorId(response.data.locator);
+        setLandlordId(response.data.landlord);
       } catch (error) {
         console.error("Error fetching properties: ", error )
       }
     };
-    console.log(locatorId)
+    console.log(landlordId)
     fetchData();
   }, [])
 
@@ -33,8 +33,8 @@ const EditPropertyForm = () => {
       name,
       street,
       streetNumber,
-      locator: {
-        id: locatorId
+      landlord: {
+        id: landlordId
       }
     };
 

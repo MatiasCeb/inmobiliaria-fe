@@ -6,22 +6,22 @@ import "./NewContractForm.css";
 const NewContractForm = () => {
   const API_URL = import.meta.env.VITE_API_URL
 
-  const [locadores, setLocadores] = useState([]);
+  const [landlords, setLandlords] = useState([]);
   const [locatarios, setLocatarios] = useState([]);
   const [inmuebles, setInmuebles] = useState([]);
-  const [selectedLocador, setSelectedLocador] = useState({});
+  const [selectedLandlord, setSelectedLandlord] = useState({});
   const [selectedLocatario, setSelectedLocatario] = useState({});
   const [selectedInmueble, setSelectedInmueble] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseLocators = await axios.get(`${API_URL}locators`);
-        setLocadores(responseLocators.data);
-        console.log("Locadores: ", responseLocators.data)
+        const responseLandlords = await axios.get(`${API_URL}landlords`);
+        setLandlords(responseLandlords.data);
+        console.log("Landlords: ", responseLandlords.data)
         const responseRenters = await axios.get(`${API_URL}renters`);
         setLocatarios(responseRenters.data);
-        console.log("Locatarios: ", responseLocators.data)
+        console.log("Locatarios: ", responseRenters.data)
         //console.log(API_URL)
       } catch (error) {
         console.error("Error fetching locators: ", error )
@@ -33,10 +33,10 @@ const NewContractForm = () => {
 
   useEffect(() => {
     // Fetch inmuebles when locador changes
-    if (selectedLocador) {
+    if (selectedLandlord) {
         const fetchData = async () => {
             try {
-              const responseProperties = await axios.get(`${API_URL}properties/locator/${selectedLocador}`);
+              const responseProperties = await axios.get(`${API_URL}properties/landlord/${selectedLandlord}`);
               setInmuebles(responseProperties.data);
               console.log("responseProperties: ", responseProperties.data)
             } catch (error) {
@@ -48,15 +48,15 @@ const NewContractForm = () => {
     } else {
       setInmuebles([]);
     }
-    console.log(locadores);
+    console.log(landlords);
     console.log(locatarios);
-  }, [selectedLocador]);
+  }, [selectedLandlord]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("selectedInmueble: ", selectedInmueble);
     const data = {
-        locatorId: selectedLocador,
+        landlordId: selectedLandlord,
         renterId: selectedLocatario,
         propertyId: selectedInmueble
     };
@@ -75,17 +75,17 @@ const NewContractForm = () => {
       <h2 className="form-title">Nuevo Contrato</h2>
 
       <div className="form-group">
-        <label htmlFor="locador">Locador:</label>
+        <label htmlFor="landlord">Locador:</label>
         <select
-          id="locador"
-          value={selectedLocador}
-          onChange={(e) => setSelectedLocador(e.target.value)}
+          id="landlord"
+          value={selectedLandlord}
+          onChange={(e) => setSelectedLandlord(e.target.value)}
           className="form-select"
         >
           <option value="">Seleccione un locador</option>
-          {locadores.map((locador) => (
-            <option key={locador.id} value={locador.id}>
-              {locador.name}
+          {landlords.map((landlord) => (
+            <option key={landlord.id} value={landlord.id}>
+              {landlord.name}
             </option>
           ))}
         </select>
@@ -115,7 +115,7 @@ const NewContractForm = () => {
           value={selectedInmueble}
           onChange={(e) => setSelectedInmueble(e.target.value)}
           className="form-select"
-          disabled={!selectedLocador}
+          disabled={!selectedLandlord}
         >
           <option value="">Seleccione un inmueble</option>
           {inmuebles.map((inmueble) => (

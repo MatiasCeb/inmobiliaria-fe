@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import "./AddPropertyForm.css";
 
 const AddPropertyForm = () => {
-  const { locatorId } = useParams(); // Obtener el id del locator desde la URL
+  const { landlordId } = useParams(); // Obtener el id del Landlord desde la URL
   const [name, setName] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
@@ -13,13 +13,13 @@ const AddPropertyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // TODO: El locator id enviado deberia hacer que se sume la propiedad al objeto locator en BE
+    // TODO: El locator id enviado deberia hacer que se sume la propiedad al objeto Landlord en BE
     const newProperty = {
       name,
       street,
       streetNumber,
-      locator: {
-        id: locatorId
+      landlord: {
+        id: landlordId
       }
     };
 
@@ -35,7 +35,7 @@ const AddPropertyForm = () => {
       
       if (response.ok) {
         // Redirige a /locators después de una respuesta exitosa
-        navigate('/locators');
+        navigate('/landlords');
       } else {
         console.error('Error en el servidor al agregar la propiedad');
       }

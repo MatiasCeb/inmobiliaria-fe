@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import './TableCard.css';
 import { Link } from 'react-router-dom';
 
-const TableCard = ( {locator} ) => {
+const TableCard = ( {landlord} ) => {
   return (
     <div className="table-card">
       <div className="table-card-header">
-        <h2>{locator.name} {locator.lastname}</h2>
+        <h2>{landlord.name} {landlord.lastname}</h2>
       </div>
       <div className="table-card-body">
-        {locator.propertiesList && locator.propertiesList.length > 0 && (
+        {landlord.propertiesList && landlord.propertiesList.length > 0 && (
           <>
             <h3>Properties:</h3>
             <table className="property-table">
@@ -21,7 +21,7 @@ const TableCard = ( {locator} ) => {
                 </tr>
               </thead>
               <tbody>
-                {locator.propertiesList.map(property => (
+                {landlord.propertiesList.map(property => (
                   <tr key={property.id}>
                     <td>{property.name}</td>
                     <td>{property.street}</td>
@@ -32,10 +32,10 @@ const TableCard = ( {locator} ) => {
             </table>
           </>
         )}
-        <Link to={`/add-properties/${locator.id}`} className="view-more-btn">Agregar propiedad</Link>
-        <Link to={`/edit-locator/${locator.id}`} className="view-more-btn">Editar Locador</Link>
-        <Link to={`/locators/delete/${locator.id}`} className="view-more-btn">Eliminar Locador</Link>
-        <Link to={`/locators/${locator.id}`} className="view-more-btn">Ver más</Link>
+        <Link to={`/add-properties/${landlord.id}`} className="view-more-btn">Agregar propiedad</Link>
+        <Link to={`/edit-landlord/${landlord.id}`} className="view-more-btn">Editar Locador</Link>
+        <Link to={`/landlords/delete/${landlord.id}`} className="view-more-btn">Eliminar Locador</Link>
+        <Link to={`/landlords/${landlord.id}`} className="view-more-btn">Ver más</Link>
       </div>
     </div>
   );
@@ -44,5 +44,5 @@ const TableCard = ( {locator} ) => {
 export default TableCard;
 
 TableCard.propTypes = {
-    locator: PropTypes.object
+    landlord: PropTypes.object
   };

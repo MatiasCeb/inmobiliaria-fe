@@ -1,18 +1,18 @@
 import { useNavigate } from 'react-router-dom';
-import './AddLandlordButton.css';
+import './AddRenterButton.css';
 
-const AddContractButton = () => {
+const AddRenterButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/add-contract');
+    navigate('/add-renter');
   };
 
   return (
     <button onClick={handleClick} className="add-locator-button">
-      Agregar Nuevo Contrato
+      Agregar Nuevo Locatario
     </button>
   );
 };
 
-export default AddContractButton;
+export default AddRenterButton;

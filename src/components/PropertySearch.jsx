@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import PropertyCard from './PropertyCard';
-import './LocatorSearch.css';
+import './LandlordSearch.css';
 
 const PropertySearch = ({ props }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Filtra los locators en base al nombre o apellido que coincida con la búsqueda
+  // Filtra las propiedades en base al nombre o apellido que coincida con la búsqueda
   const filteredProperties = props.filter(prop =>
     `${prop.name} ${prop.street}`
       .toLowerCase()
