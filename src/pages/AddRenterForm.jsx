@@ -7,6 +7,11 @@ const AddRenterForm = () => {
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
   const [dni, setDni] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [cuil, setCuil] = useState('');
+  const [monthlyIncome, setMonthlyIncome] = useState('');
+  const [employer, setEmployer] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -16,6 +21,11 @@ const AddRenterForm = () => {
       name,
       lastname,
       dni,
+      email,
+      phone,
+      cuil,
+      monthlyIncome,
+      employer
     };
 
     try {
@@ -73,6 +83,66 @@ const AddRenterForm = () => {
           type="number"
           value={dni}
           onChange={(e) => setDni(e.target.value)}
+          className="form-input"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email">Email:</label>
+        <input
+          id="email"
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="form-input"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email">Teléfono:</label>
+        <input
+          id="phone"
+          type="number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="form-input"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="cuil">Cuil:</label>
+        <input
+          id="cuil"
+          type="number"
+          value={cuil}
+          onChange={(e) => setCuil(e.target.value)}
+          className="form-input"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="monthlyIncome">Monto de sueldo:</label>
+        <input
+          id="monthlyIncome"
+          type="number"
+          value={monthlyIncome}
+          onChange={(e) => setMonthlyIncome(e.target.value)}
+          className="form-input"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="employer">Empleador:</label>
+        <input
+          id="employer"
+          type="text"
+          value={employer}
+          onChange={(e) => setEmployer(e.target.value)}
           className="form-input"
           required
         />
